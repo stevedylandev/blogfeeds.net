@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Feeds</title>
     <link rel="stylesheet" href="tailwindcss" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <meta name="description" content="">
 
     <!-- Facebook Meta Tags -->
@@ -22,6 +25,9 @@
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="/og.png">
     <style>
+      * {
+        font-family: 'DM Sans', sans-serif;
+      }
       details[open] summary svg {
         transform: rotate(90deg);
       }
@@ -40,6 +46,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
     </svg>
   </button>
+
 
   <div id="scrollContainer" class="flex snap-x snap-mandatory overflow-x-scroll">
     <section class="min-h-screen w-screen flex-shrink-0 flex flex-col gap-12 justify-center items-center px-8 snap-center">
@@ -213,6 +220,12 @@
             </div>
           </details>
         </div>
+
+        <div class="text-center mt-8">
+          <button id="backToStartBtn" class="underline font-medium transition-colors">
+            Back to the beginning
+          </button>
+        </div>
       </div>
     </section>
   </div>
@@ -221,6 +234,7 @@
     const scrollContainer = document.getElementById('scrollContainer');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const backToStartBtn = document.getElementById('backToStartBtn');
 
     let currentSection = 0;
     const totalSections = scrollContainer.children.length;
@@ -249,6 +263,10 @@
 
     nextBtn.addEventListener('click', () => {
       scrollToSection(currentSection + 1);
+    });
+
+    backToStartBtn.addEventListener('click', () => {
+      scrollToSection(0);
     });
 
     // Update current section when user manually scrolls
