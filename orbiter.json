@@ -1,6 +1,6 @@
 {
-	"siteId": "e4400933-efdd-4788-80d9-6a28872c3dc7",
-	"domain": "norns",
-	"buildCommand": "bun run build:site",
-	"buildDir": "site-dist"
+  "siteId": "daac076f-98a1-4388-a7ad-ed7d51effc34",
+  "domain": "blogfeeds",
+  "buildCommand": "bun run build",
+  "buildDir": "site-dist"
 }
