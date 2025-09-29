@@ -33,7 +33,7 @@
       }
     </style>
 </head>
-<body class="overflow-hidden h-screen">
+<body class="overflow-x-hidden overflow-y-scroll min-h-screen sm:py-0 py-8">
   <!-- Navigation Buttons -->
   <button id="prevBtn" class="fixed sm:left-4 left-2 top-1/2 transform -translate-y-1/2 z-10 hover:text-black text-black/40 p-3  transition-all duration-300">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +49,7 @@
 
 
   <div id="scrollContainer" class="flex snap-x snap-mandatory overflow-x-scroll">
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col gap-12 justify-center items-center px-8 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col gap-12 sm:justify-center justify-start items-center px-8 snap-center">
       <div class="max-w-4xl space-y-4">
         <p>Do you kinda hate social media?</p>
 
@@ -62,7 +62,7 @@
       </div>
     </section>
 
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col justify-center items-center px-12 sm:px-8 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col sm:justify-center justify-start items-center px-12 sm:px-8 snap-center">
       <div class="max-w-xl space-y-4">
         <p>No this isn't another platform.</p>
           <p>
@@ -79,7 +79,7 @@
       </div>
     </section>
 
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col justify-center items-center sm:px-8 px-12 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col sm:justify-center justify-start items-center sm:px-8 px-12 snap-center">
       <div class="max-w-xl space-y-4">
         <img src="blog.svg" alt="Blog" id="blog" class="w-full mx-auto" />
 
@@ -125,7 +125,7 @@
       </div>
     </section>
 
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col justify-center items-center sm:px-8 px-12 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col sm:justify-center justify-start items-center sm:px-8 px-12 snap-center">
       <div class="max-w-xl space-y-4">
         <img src="rss.svg" alt="RSS" id="rss" class="w-full mx-auto" />
 
@@ -140,7 +140,7 @@
       </div>
     </section>
 
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col justify-center items-center sm:px-8 px-12 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col sm:justify-center justify-start items-center sm:px-8 px-12 snap-center">
       <div class="max-w-xl space-y-4">
         <img src="feeds.svg" alt="Feeds" id="feeds" class="w-full mx-auto" />
 
@@ -148,14 +148,14 @@
       </div>
     </section>
 
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col justify-center items-center sm:px-8 px-12 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col sm:justify-center justify-start items-center sm:px-8 px-12 snap-center">
       <div class="max-w-xl space-y-4">
         <img src="idea.svg" class="w-full mx-auto" />
         <p>The best part about blog feeds? It's just an idea. There's no central authority. There's no platform. No massive tech giant trying to take your data. It's just you and the people you care about.</p>
       </div>
     </section>
 
-    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col justify-center items-start sm:px-8 px-12 snap-center">
+    <section class="min-h-screen w-screen flex-shrink-0 flex flex-col sm:justify-center justify-start items-start sm:px-8 px-12 snap-center">
       <div class="max-w-xl space-y-4 w-full mx-auto">
           <img src="frequentlyaskedquestions.svg" class="w-full mx-auto" />
 
