@@ -1,0 +1,18 @@
+{
+	"name": "blogfeeds",
+	"version": "0.0.1",
+	"description": "Webstie to promote blogfeeds",
+	"type": "module",
+	"scripts": {
+		"build": "bun scripts/build-site",
+		"dev": "bun site/index.html --console"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"bun-plugin-tailwind": "^0.0.15",
+		"tailwindcss": "^4.1.13"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
