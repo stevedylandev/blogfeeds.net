@@ -238,7 +238,7 @@
     const scrollContainer = document.getElementById('scrollContainer');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const backToStartBtn = document.getElementById('backToStartBtn');
+    //const backToStartBtn = document.getElementById('backToStartBtn');
 
     let currentSection = 0;
     const totalSections = scrollContainer.children.length;
@@ -269,9 +269,9 @@
       scrollToSection(currentSection + 1);
     });
 
-    backToStartBtn.addEventListener('click', () => {
-      scrollToSection(0);
-    });
+    // backToStartBtn.addEventListener('click', () => {
+    //   scrollToSection(0);
+    // });
 
     // Update current section when user manually scrolls
     scrollContainer.addEventListener('scroll', () => {
