@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "bun scripts/build-site",
-		"dev": "bun site/index.html --console"
+		"dev": "bun site/*.html --console"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
