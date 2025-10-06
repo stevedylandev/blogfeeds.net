@@ -29,7 +29,7 @@
     <meta name="twitter:description" content="Creating organic networks through Blogs, RSS, and Feeds">
     <meta name="twitter:image" content="/og.png">
     <style>
-      * {
+      body {
         font-family: 'DM Sans', sans-serif;
       }
       details[open] summary svg {
@@ -48,6 +48,14 @@
       </a>
       <img src="https://blogfeeds.net/feeds.svg" alt="Feeds" id="feeds" class="w-5/6 mx-auto py-4" />
       <p class="text-gray-700 mb-6">To help foster a community around the concept of Blog Feeds, this page acts as an aggregator of thsoe who have a feeds page on their blog. If that's you and you don't see your blog below, then submit the RSS feed below and we'll review it regularly to add it!</p>
+
+      <div class="mb-6">
+        <p class="text-gray-700 mb-2">This collection of feeds is also accessible via API</p>
+        <div class="bg-gray-100 rounded-lg p-3 !font-mono text-sm">
+          <div class="mb-4">curl https://api.blogfeeds.net?format=json</div>
+          <div>curl https://api.blogfeeds.net?format=opml</div>
+        </div>
+      </div>
 
       <form id="feedForm" class="space-y-4">
         <div>
@@ -163,7 +171,7 @@
 
         if (response.ok) {
           messageDiv.className = 'mt-4 p-4 rounded-lg bg-green-100 text-green-800';
-          messageDiv.textContent = 'Feed submitted successfully!';
+          messageDiv.textContent = 'Feed submitted for review!';
           document.getElementById('url').value = '';
         } else {
           messageDiv.className = 'mt-4 p-4 rounded-lg bg-red-100 text-red-800';
