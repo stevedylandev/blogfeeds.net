@@ -1,6 +1,0 @@
-{
-  "siteId": "daac076f-98a1-4388-a7ad-ed7d51effc34",
-  "domain": "blogfeeds",
-  "buildCommand": "bun run build",
-  "buildDir": "site-dist"
-}

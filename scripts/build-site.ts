@@ -1,30 +1,42 @@
-import { $ } from "bun";
+import { $, Glob } from "bun";
+import { rm } from "node:fs/promises";
 
-// Clean up dist
-await $`rm -rf site-dist`;
-// Create new dist
-await $`cp -r site site-dist`;
-// Compile tailwindcss
-await $`bunx @tailwindcss/cli -i ./site/input.css -o ./site-dist/output.css `;
+const OUT = "site-dist";
+// Dev placeholder that bun-plugin-tailwind resolves; must be rewritten for prod.
+const PLACEHOLDER = `<link rel="stylesheet" href="tailwindcss" />`;
 
-// Read index file
-const htmlContent = await Bun.file("site-dist/index.html").text();
-// Update script tags and css link
-const updatedHtml = htmlContent
-	.replace(
-		`<link rel="stylesheet" href="tailwindcss" />`,
-		`<link rel="stylesheet" href="output.css" />`,
+// Fresh copy of the static site
+await $`rm -rf ${OUT}`;
+await $`cp -r site ${OUT}`;
+
+// Compile + minify Tailwind
+await $`bunx @tailwindcss/cli -i ./site/input.css -o ./${OUT}/assets/styles.css --minify`;
+
+// Content-hash the stylesheet so it can be cached immutably
+const css = Bun.file(`${OUT}/assets/styles.css`);
+const hash = Bun.hash(await css.arrayBuffer()).toString(16).slice(0, 8);
+const cssPath = `/assets/styles.${hash}.css`;
+await Bun.write(`${OUT}${cssPath}`, css);
+await rm(`${OUT}/assets/styles.css`);
+
+// The Tailwind source isn't needed in the deployed output
+await rm(`${OUT}/input.css`, { force: true });
+
+// Point every page at the built stylesheet
+for (const file of new Glob("*.html").scanSync(OUT)) {
+	const path = `${OUT}/${file}`;
+	const html = await Bun.file(path).text();
+	if (!html.includes(PLACEHOLDER)) {
+		throw new Error(
+			`${file}: expected stylesheet placeholder ${PLACEHOLDER} — CSS would 404`,
+		);
+	}
+	await Bun.write(
+		path,
+		html.replaceAll(
+			PLACEHOLDER,
+			`<link rel="stylesheet" href="${cssPath}" />`,
+		),
 	);
-// Write file
-await Bun.write("site-dist/index.html", updatedHtml);
-
-// Read feeds file
-const feedsContent = await Bun.file("site-dist/feeds.html").text();
-// Update script tags and css link
-const updatedFeedsHtml = feedsContent
-	.replace(
-		`<link rel="stylesheet" href="tailwindcss" />`,
-		`<link rel="stylesheet" href="/output.css" />`,
-	);
-// Write file
-await Bun.write("site-dist/feeds.html", updatedFeedsHtml);
+	console.log(`✓ ${file} → ${cssPath}`);
+}
